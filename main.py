@@ -8,11 +8,10 @@ from schemas import PostModel, PostSchema
 
 db = db_session.session_factory()
 
-app = FastAPI()
+app = FastAPI(csrf=False)
 
 
 class Query(graphene.ObjectType):
-
     all_posts = graphene.List(PostModel)
     post_by_id = graphene.Field(PostModel, post_id=graphene.Int(required=True))
 
